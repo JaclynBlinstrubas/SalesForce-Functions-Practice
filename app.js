@@ -23,9 +23,23 @@
 
 //// FUNCTION EXPRESSIONS ////
 
-const calculateGearRatio = function (driverGear, drivenGear) {
-  return driverGear / drivenGear
+// const calculateGearRatio = function (driverGear, drivenGear) {
+//   return driverGear / drivenGear
+// }
+// // the rest works the same
+// let gearRatio = calculateGearRatio(42, 30)
+// console.log(gearRatio) // 1.4
+
+// --------------
+
+//// RETURNING A FUNCTION  ////
+
+// when invoked, this function will assign a function
+function gearFactory() {
+  return function (driverGear, drivenGear) {
+    return driverGear / drivenGear
+  }
 }
-// the rest works the same
-let gearRatio = calculateGearRatio(42, 30)
-console.log(gearRatio) // 1.4
+// calculateGearRatio can now be invoked as a function
+const calculateGearRatio = gearFactory()
+// and all the rest
